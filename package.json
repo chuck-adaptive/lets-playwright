@@ -1,0 +1,19 @@
+{
+  "name": "lets-playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "hello-openfin": "openfin -l -c ./hello-openfin.app.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.15.2",
+    "openfin-adapter": "^21.64.9",
+    "openfin-cli": "^3.0.2",
+    "playwright": "^1.15.2"
+  }
+}
