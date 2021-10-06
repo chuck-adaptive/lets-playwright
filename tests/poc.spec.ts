@@ -22,4 +22,18 @@ test.describe('Hello OpenFin', () => {
             expect(runtimeVersion).toEqual('22.94.65.4'); 
         })
     })
+    test.describe('Waiting for an event to happen to assert something', () => {
+        test('we can click the maximize icon and wait for the event to fire an event on it', async ({ mainWindow }) => {
+            // In this test we do NOT await the window click. We await the result of the window click. Thus, we can
+            // smart wait for events to fire on both the dom and the OpenFin objects
+            mainWindow.click('#minimize-window');
+            const val = await mainWindow.evaluate(eventName => {
+                const currentWindow = window.fin.Window.getCurrentSync();
+                return new Promise(callback => currentWindow.on(eventName, callback));
+            }, 'minimized');
+            expect(val).toBeTruthy();
+            //TODO cleanup the test results
+        })
+
+    })
 })
